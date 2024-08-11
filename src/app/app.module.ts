@@ -24,9 +24,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AngularFireAuthModule,
     HttpClientModule,
    
-   
-     
-    
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

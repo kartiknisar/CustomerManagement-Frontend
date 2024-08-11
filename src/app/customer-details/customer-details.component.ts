@@ -1,19 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Account, Customer, CustomerService } from '../customer.service';
-import { HttpClient } from '@angular/common/http';
-
-
+import {  CustomerDetails, CustomerService, TransactionDetails } from '../customer.service';
 @Component({
   selector: 'app-customer-details',
   templateUrl: './customer-details.component.html',
   styleUrls: ['./customer-details.component.scss']
 })
 export class CustomerDetailsComponent implements OnInit {
-
-    customers: Customer[] = [];
+    customers:CustomerDetails[] = [];
     selectedAccount: number| null = null;
-    transactions: any[] = [];
-    transactionDetails:any
+    transactionDetails:TransactionDetails |null=null
     constructor(private customerService: CustomerService) {}
   
     ngOnInit(): void {
@@ -21,19 +16,10 @@ export class CustomerDetailsComponent implements OnInit {
         this.customers = customers;
       });
     }
-  getTransactionDetails(accountNumber:any): void {
+  getTransactionDetails(accountNumber:number): void {
     this.selectedAccount = accountNumber;
     this.customerService.getTransactionDetails(accountNumber).subscribe(transactionDetails => {
       this.transactionDetails = transactionDetails;
     });
-    // this.http.get<any[]>(`http://localhost:5000/api/transactions/${this.selectedAccount}`).subscribe({
-    //   next: (data) => {
-    //     this.transactionDetails = data;
-    //     console.log('Transaction details:', this.transactionDetails);
-    //   },
-    //   error: (err) => {
-    //     console.error('Error fetching transaction details', err);
-      // }
-    // });
   }
 }

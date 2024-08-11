@@ -1,27 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-// import { AngularFireAuth } from '@angular/fire/compat/auth';
-
-
-// import firebase from 'firebase/compat/app';
-// // import { GoogleAuthProvider } from 'firebase/auth';
-// @Component({
-//   selector: 'app-login',
-//   templateUrl: './login.component.html',
-//   styleUrls: ['./login.component.scss']
-// })
-// export class LoginComponent implements OnInit {
-
-//   constructor(private auth: AngularFireAuth) {}
-
-//   loginWithGoogle() {
-//     const provider = new firebase.auth.GoogleAuthProvider();
-//     this.auth.signInWithPopup(provider);
-//   }
-
-//   ngOnInit(): void {
-//   }
-
-// }
 
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
