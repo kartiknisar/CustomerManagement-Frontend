@@ -1,0 +1,52 @@
+
+<h1>Customer Details</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Accounts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers">
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.address }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let account of customer.accounts">
+            <a  (click)="getTransactionDetails(account)">{{ account }}</a>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<div *ngIf="transactionDetails">
+  <h3>Transaction Details for Account: {{ selectedAccount }}</h3>
+  <p><strong>Total Transactions:</strong> {{ transactionDetails.transaction_count }}</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Transaction Code</th>
+        <th>Symbol</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactionDetails.transactions">
+        <td>{{ transaction.date | date:'shortDate' }}</td>
+        <td>{{ transaction.amount }}</td>
+        <td>{{ transaction.transaction_code }}</td>
+        <td>{{ transaction.symbol }}</td>
+        <td>{{ transaction.price | number:'1.2-2' }}</td>
+        <td>{{ transaction.total | number:'1.2-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
